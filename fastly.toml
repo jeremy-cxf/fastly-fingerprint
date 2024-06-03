@@ -1,12 +1,12 @@
 # This file describes a Fastly Compute package. To learn more visit:
 # https://developer.fastly.com/reference/fastly-toml/
 
-authors = ["<oss@fastly.com>"]
-description = "A basic starter kit that demonstrates routing, simple synthetic responses and overriding caching rules."
+authors = ["csoc@fastly.com"]
+description = "meep"
 language = "rust"
 manifest_version = 3
-name = "Default starter for Rust"
-service_id = "Xpw7rO3RAVzEWAWexKswk1"
+name = "mss compute poc for rust"
+service_id = "UDjLLnd2cGb98HcrEcfjj0"
 
 [scripts]
   build = "cargo build --bin fastly-compute-project --release --target wasm32-wasi --color always"
