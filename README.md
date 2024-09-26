@@ -2,7 +2,7 @@
 
 This is a compute template that simply returns all available Fastly Fingerprint attributes of the client caller.
 
-To call it, simply call <your-url>/info.
+To call it, simply call <your-url>/info. This is useful for research, or aggregation of multiple client fingerprints.
 
 This should return a JSON response back:
 
