@@ -1,23 +1,42 @@
-# Default Starter Kit for Rust
+# Fastly Fingerprint
 
-[![Deploy to Fastly](https://deploy.edgecompute.app/button)](https://deploy.edgecompute.app/deploy)
+This is a compute template that simply returns all available Fastly Fingerprint attributes of the client caller.
 
-Get to know the Fastly Compute environment with a basic starter that demonstrates routing, simple synthetic responses and code comments that cover common patterns.
+To call it, simply call <your-url>/info.
 
-**For more details about this and other starter kits for Compute, see the [Fastly Documentation Hub](https://www.fastly.com/documentation/solutions/starters/)**.
+This should return a JSON response back:
 
-## Features
-
-- Allow only requests with particular HTTP methods
-- Match request URL path and methods for routing
-- Build synthetic responses at the edge
-
-## Understanding the code
-
-This starter is intentionally lightweight, and requires no dependencies aside from the [`fastly`](https://docs.rs/fastly) crate. It will help you understand the basics of processing requests at the edge using Fastly. This starter includes implementations of common patterns explained in our [using Compute](https://www.fastly.com/documentation/guides/compute/rust/) and [VCL migration](https://www.fastly.com/documentation/guides/compute/migrate/) guides.
-
-The starter doesn't require the use of any backends. Once deployed, you will have a Fastly service running on Compute that can generate synthetic responses at the edge.
-
-## Security issues
-
-Please see [SECURITY.md](SECURITY.md) for guidance on reporting security-related issues.
+```
+{
+  "client": {
+    "ip": "76.41.121.131",
+    "tls": {
+      "protocol": "TLSv1.3",
+      "neg_cipher": "TLS_AES_128_GCM_SHA256",
+      "ja3": "b5001237acdf006056b409cc433726b0",
+      "ja4": "t13d1715h2_5b57614c22b0_5c2c66f702b0"
+    },
+    "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0",
+    "scheme": "https",
+    "h2fp": "1:65536;4:131072;5:16384|12517377|1:0:0:201,2:0:0:101,3:0:0:1|m,p,a,s",
+    "header_info": {
+      "oh_count": "12",
+      "oh_fp": "aB:a6:aT:aR:aQ:wE:fk:fq:c4:ix:q4:oW",
+      "oh_order": [
+        ":authority",
+        "user-agent",
+        "accept",
+        "accept-language",
+        "accept-encoding",
+        "upgrade-insecure-requests",
+        "sec-fetch-dest",
+        "sec-fetch-mode",
+        "sec-fetch-site",
+        "sec-fetch-user",
+        "priority",
+        "te"
+      ]
+    }
+  }
+}
+```
